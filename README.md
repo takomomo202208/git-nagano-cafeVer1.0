@@ -52,9 +52,9 @@ Ruby on Rails
 
 ## インストール
 ~~~:Console
-$ git clone https://github.com/ChanChans/order-app
-$ cd order-app
-$ sh setup.sh
+$ git clone https://
+$ cd ???
+$ sh ???.sh
 $ ~do anything~
 ~~~
 
