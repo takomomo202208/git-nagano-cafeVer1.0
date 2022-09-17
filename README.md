@@ -1,45 +1,26 @@
-# README
+# ながのCAKE
 ## 概要
 DMM WEBCAMPのチーム開発の一環として作成するアプリ。 <br>
 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販を想定したECサイト開発。
 
-## デモ画像
-![デモ画像]("https://drive.google.com/drive/u/0/folders/1kM3yeiLU1eoX3oozT9Ce8hN05rzZGyHT")
+## デモ動画(サンプル表示中)
+https://user-images.githubusercontent.com/108647290/190858039-536c3a2f-d809-4e74-abeb-595aa741a71e.mp4
 
 # 構成
-## 要件定義
-![要件定義]("https://drive.google.com/drive/u/0/folders/1kM3yeiLU1eoX3oozT9Ce8hN05rzZGyHT")
-
-## 機能一覧
-![機能一覧]("")
-
-## UI_Flows
-* 顧客側 <br>
-![UI_Flows]("")
-
-* 管理者側 <br>
-![UI_Flows]("")
-
-## Wire_Frame
-* 顧客側 <br>
-![Wire_Frame]("")
-
-* 管理者側 <br>
-![Wire_Frame]("")
-
 ## ER図
-![ER図](https://github.com/takomomo202208/git-testVer1.0/blob/main/ER%E5%9B%B3_%E3%83%81%E3%83%BC%E3%83%A0%E3%81%9F%E3%81%93%E3%82%82%E3%82%82Ver2.1.drawio.png
- "ER図")
+![ER図_チームたこももVer2 1 drawio](https://user-images.githubusercontent.com/108647290/190858090-cf5fd01a-0f34-4b7e-8d22-764ebd9991c7.png)
+
 
 ## テーブル定義書
-![テーブル定義書]("完成品を入れる")
+[DWCCOMMIT_設計課題_テーブル提議書_チームたこもも回答用Ver5 - 会員.pdf](https://github.com/takomomo202208/git-nagano-cafeVer1.0/files/9591720/DWCCOMMIT_._._.Ver5.-.pdf)
 
 ## アプリケーション詳細設計図
-* 顧客側 <br>
-![アプリケーション詳細設計図]("完成品を入れる")
+[就業両立コース_設計課題_アプリケーション詳細設計書_回答用 ver2 - routes.pdf](https://github.com/takomomo202208/git-nagano-cafeVer1.0/files/9591721/_._._.ver2.-.routes.pdf)
 
-* 管理者側 <br>
-![アプリケーション詳細設計図]("完成品を入れる")
+## 開発環境
+* ruby '3.1.2'
+* rails '~> 6.1.6', '>= 6.1.6.1'
+* sqlite3 '~> 1.4'
 
 # 開発者
 ___チーム名___
