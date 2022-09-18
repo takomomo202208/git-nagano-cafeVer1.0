@@ -1,22 +1,23 @@
 # README
-## 概要
-DMM WEBCAMPのチーム開発の一環として作成するアプリ。 <br>
-長野県にある小さな洋菓子店「ながのCAKE」の商品を通販を想定したECサイト開発。
 
-## デモ画像
-![デモ画像]("https://drive.google.com/drive/u/0/folders/1kM3yeiLU1eoX3oozT9Ce8hN05rzZGyHT")
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
+<<<<<<< HEAD
 # 構成
 ## 要件定義
 ![要件定義]("https://drive.google.com/drive/u/0/folders/1kM3yeiLU1eoX3oozT9Ce8hN05rzZGyHT")
+=======
+Things you may want to cover:
 
-## 機能一覧
-![機能一覧]("")
+* Ruby version
+>>>>>>> parent of 92ee258 (README.md を作成する)
 
-## UI_Flows
-* 顧客側 <br>
-![UI_Flows]("")
+* System dependencies
 
+* Configuration
+
+<<<<<<< HEAD
 * 管理者側 <br>
 ![UI_Flows]("")
 
@@ -50,3 +51,16 @@ ___メンバー___
 * かとぅーん
 * やすくん
 * つよロン
+=======
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+>>>>>>> parent of 92ee258 (README.md を作成する)
