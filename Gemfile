@@ -60,3 +60,8 @@ gem 'devise'
 
 #ページネーション機能
 gem 'kaminari','~> 1.2.1'
+
+#Rubyのヴァージョンアップにより外部Gemになった機能を追加
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
