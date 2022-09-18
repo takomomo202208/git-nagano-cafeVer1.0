@@ -53,3 +53,4 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
     add_index :customers, [:customer_id,:last_kana,:first_kana], unique: true
   end
 end
+
