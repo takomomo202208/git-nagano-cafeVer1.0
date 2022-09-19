@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   end
 
   #topページはapp/views/homes/topで設定
-  root to:"homes#top"
+  root to:"public/homes#top"
   #aboutページはapp/views/homes/aboutで設定
-  get 'about'=>'homes#about' ,as:'about'
+  get 'about'=>'public/homes#about' ,as:'about'
 end
