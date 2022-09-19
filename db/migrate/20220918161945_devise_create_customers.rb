@@ -1,11 +1,20 @@
 # frozen_string_literal: true
 
-class DeviseCreateUsers < ActiveRecord::Migration[6.1]
+class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
   def change
-    create_table :users do |t|
+    create_table :customers , id: false do |t|
       ## Database authenticatable
+      t.integer:customer_id,null: false, index: false,primary_key: true
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :last_name,null: false
+      t.string :first_name,null: false
+      t.string :last_kana,null: false
+      t.string :first_kana,null: false
+      t.string :postal_code,null: false
+      t.string :address,null: false
+      t.string :telephone_number,null: false
+      t.boolean :is_deleted, null: false, default: false
 
       ## Recoverable
       t.string   :reset_password_token
@@ -36,9 +45,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.timestamps null: false
     end
 
-    add_index :users, :email,                unique: true
-    add_index :users, :reset_password_token, unique: true
-    # add_index :users, :confirmation_token,   unique: true
-    # add_index :users, :unlock_token,         unique: true
+    add_index :customers, :email,                unique: true
+    add_index :customers, :reset_password_token, unique: true
+    # add_index :customers, :confirmation_token,   unique: true
+    # add_index :customers, :unlock_token,         unique: true
+    add_index :customers, [:customer_id,:last_name,:first_name], unique: true
+    add_index :customers, [:customer_id,:last_kana,:first_kana], unique: true
   end
 end
+
