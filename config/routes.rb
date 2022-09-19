@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
   #管理者と会員で別々のcontrollerを利用した処理にするため、分けて記載
-  devise_for :customers,controllers: {
+  #デフォルトで作成されるパスワードのルーティングを省略
+  devise_for :customers,skip: [:passwords],controllers: {
     sessions:     'admins/sessions',
-    passwords:     'admins/passwords',
     registrations: 'admins/registrations'
   }
 
-  devise_for :admins,controllers: {
+  #デフォルトで作成されるパスワード＆登録のルーティングを省略
+  devise_for :admins, skip: [:registrations, :passwords],controllers: {
     sessions:      'users/sessions',
-    passwords:     'users/passwords',
-    registrations: 'users/registrations'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
