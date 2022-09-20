@@ -1,29 +1,17 @@
-<!--カリキュラム「アプリケーションを完成させよう２-６章-動的なヘッダーを作成する」を参照-->
-<% if customer_signed_in? %>
-
-  <!--li> 担当者の方へ〇〇の部分に適切なものをいれてください
-    <!%= link_to "マイページ", 〇〇_path %>
-  </li>
-  <li>
-    <!%= link_to "商品一覧", 〇〇_path %>
-  </li>
-  <li>
-    <!%= link_to "カート", 〇〇_path %>
-  </li-->
-  <li>
-    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-  </li>
-<% else %>
-  <!--li> 担当者の方へ〇〇の部分に適切なものをいれてください
-    <!%= link_to "About", 〇〇_path %>
-  </li>
-  <li>
-    <!%= link_to "商品一覧", 〇〇_path %>
-  </li-->
-  <li>
-    <%= link_to "新規登録", new_customer_registration_path %>
-  </li>
-  <li>
-    <%= link_to "ログイン", new_customer_session_path %>
-  </li>
-<% end %>
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <ul class="navbar-nav ml-auto navbar-right">
+    <% if member_signed_in? %>
+      <li>ようこそ、<%= current_member.last_name %>さん！</li>
+      <li><%= link_to "マイページ", my_page_path %></li>
+      <li><%= link_to "商品一覧", items_path %></li>
+      <li><%= link_to "カート", cart_items_path %></li>
+      <li><%= link_to "ログアウト", destroy_customer_session %></li>
+    <% elsif admin_signed_in %>
+      <li><%= link_to "商品一覧", admin_items_path %></li>
+      <li><%= link_to "会員一覧", _path %></li>
+      <li><%= link_to "注文履歴一覧", new_customer_registration_path %></li>
+      <!--<li><%= #link_to "ジャンル一覧", _path %></li>-->
+      <li><%= link_to "ログアウト", </li>
+    <% end %>
+  </ul>
+</div>
