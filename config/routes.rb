@@ -47,29 +47,30 @@ Rails.application.routes.draw do
   # 管理者側のルーティング設定
   namespace :admin do
     #管理者トップページ
-    get '/admin' => 'admin/homes#top'
+    get '' => 'homes#top',as:'top'
     #商品
-    get '/items' => 'admin/items#index'
-    get '/items/new' => 'admin/items#new'
-    post '/items' => 'admin/items#create'
-    get '/items/:id' => 'admin/items#show',as:'item'
-    get '/items/:id/edit' => 'admin/items#edit',as:'item_edit'
-    patch '/items/:id' => 'admin/items#update'
+    get 'items' => 'items#index'
+    get 'items/new' => 'items#new'
+    post 'items' => 'items#create'
+    get 'items/:id' => 'items#show',as:'item'
+    get 'items/:id/edit' => 'items#edit',as:'item_edit'
+    patch 'items/:id' => 'items#update'
     #ジャンル
     #get '/genres' => 'admin/genres#index'
     #post '/genres' => 'admin/genres#create'
     #get '/genres/:id/edit' => 'admin/genres#edit',as:'genre_edit'
     #patch'/genres/:id' => 'admin/genres#update'
     #顧客情報関係
-    get '/customers' => 'admin/customers#index'
-    get '/customers/:id' => 'admin/customers#show',as:'customer'
-    get '/customers/:id/edit' => 'admin/customers#edit',as:'customer_edit'
-    patch'/customers/:id' => 'admin/customers#update'
+    get 'customers' => 'customers#index'
+    get 'customers/:id' => 'customers#show',as:'customer'
+    get 'customers/:id/edit' => 'customers#edit',as:'customer_edit'
+    patch'customers/:id' => 'customers#update'
     #注文機能
-    get '/orders/:id' => 'admin/orders#show',as:'order'
-    patch '/orders/:id' => 'admin/orders#update'
+    get 'orders' => 'orders#index'
+    get 'orders/:id' => 'orders#show',as:'order'
+    patch 'orders/:id' => 'orders#update'
     #注文詳細
-    patch '/orders/:order_id/order_details/:id' => 'admin/order_details#update'
+    patch 'orders/:order_id/order_details/:id' => 'order_details#update'
   end
 
   #topページはapp/views/homes/topで設定
