@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   #管理者と会員で別々のcontrollerを利用した処理にするため、分けて記載
   #デフォルトで作成されるパスワードのルーティングを省略
   devise_for :customers,skip: [:passwords],controllers: {
-    sessions:     'admins/sessions',
-    registrations: 'admins/registrations'
+    sessions:     'public/sessions',
+    registrations: 'public/registrations'
   }
 
   #デフォルトで作成されるパスワード＆登録のルーティングを省略
   devise_for :admins, skip: [:registrations, :passwords],controllers: {
-    sessions:      'users/sessions',
+    sessions:      'admin/sessions',
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -37,6 +37,12 @@ Rails.application.routes.draw do
   get '/orders' => 'public/orders#index'
   post '/orders' => 'public/orders#create'
   get '/orders/:id' => 'public/orders#show',as:'order'
+  # 配送先機能
+  get '/addresses' => 'public/addresses#index'
+  get '/addresses/:id/edit' =>'public/addresses#edit',as:'address_edit'
+  post '/addresses' => 'public/addresses#create'
+  patch '/addresses/:id' => 'public/addresses#update'
+  delete '/addresses/:id' => 'public/addresses#destroy'
 
   # 管理者側のルーティング設定
   namespace :admin do
@@ -49,11 +55,21 @@ Rails.application.routes.draw do
     get '/items/:id' => 'admin/items#show',as:'item'
     get '/items/:id/edit' => 'admin/items#edit',as:'item_edit'
     patch '/items/:id' => 'admin/items#update'
+    #ジャンル
+    #get '/genres' => 'admin/genres#index'
+    #post '/genres' => 'admin/genres#create'
+    #get '/genres/:id/edit' => 'admin/genres#edit',as:'genre_edit'
+    #patch'/genres/:id' => 'admin/genres#update'
     #顧客情報関係
-    get '/admin/customers' => 'admin/customers#index'
-    get '/admin/customers/:id' => 'admin/customers#show',as:'customer'
-    get '/admin/customers/:id/edit' => 'admin/customers#edit',as:'customer_edit'
-    patch'/admin/customers/:id' => 'admin/customers#update'
+    get '/customers' => 'admin/customers#index'
+    get '/customers/:id' => 'admin/customers#show',as:'customer'
+    get '/customers/:id/edit' => 'admin/customers#edit',as:'customer_edit'
+    patch'/customers/:id' => 'admin/customers#update'
+    #注文機能
+    get '/orders/:id' => 'admin/orders#show',as:'order'
+    patch '/orders/:id' => 'admin/orders#update'
+    #注文詳細
+    patch '/orders/:order_id/order_details/:id' => 'admin/order_details#update'
   end
 
   #topページはapp/views/homes/topで設定
