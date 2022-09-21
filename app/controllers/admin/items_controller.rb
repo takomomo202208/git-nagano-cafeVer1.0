@@ -19,4 +19,10 @@ class Admin::ItemsController < ApplicationController
   def update
   end
 
+  private
+
+  def items
+   # params.require(:〇〇テーブル名).permit(:〇〇, :〇〇カラム名)
+  end
+
 end

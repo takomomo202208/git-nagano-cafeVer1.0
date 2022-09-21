@@ -12,5 +12,10 @@ class Admin::CustomersController < ApplicationController
 
   def update
   end
+  
+  private
+  def customers_params
+   # params.require(:〇〇テーブル名).permit(:〇〇, :〇〇カラム名)
+  end
 
 end
