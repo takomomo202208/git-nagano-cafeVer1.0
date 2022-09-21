@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index,:show]
   #get 'items' => 'public/items#index'
   #get 'items/:id' => 'public/items#show',as:'item'
-  
+
   # 会員
   resources :customers, only: [:index,:show,:edit,:update]
   #get 'customers' => 'public/customers#index'
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   #patch '/customers/information' => 'public/customers#update'
   get 'customers/unsubscribe' => 'public/customers#unsubscribe',as:'unsubscribe'
   patch 'customers/withdraw' => 'public/customers#withdraw'
-  
+
   # カート機能
   resources :cart_items, only: [:index,:create,:update,:destroy]
   #get '/cart_items' => 'public/cart_items#index'
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   #delete '/cart_items/:id' => 'public/cart_items#destroy'
   delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
   post '/cart_items' => 'public/cart_items#create'
-  
+
   # 商品機能
   resources :orders, only: [:index, :new, :create,:show]
   #get '/orders/new' => 'public/orders#new'
@@ -42,9 +42,9 @@ Rails.application.routes.draw do
   #get '/orders' => 'public/orders#index'
   #post '/orders' => 'public/orders#create'
   #get '/orders/:id' => 'public/orders#show',as:'order'
-  
+
   # 配送先機能
-  resources :addresses, only: [:index,:create,:show,:update,:destroy]
+  resources :addresses, only: [:index,:create,:edit,:update,:destroy]
   #get '/addresses' => 'public/addresses#index'
   #get '/addresses/:id/edit' =>'public/addresses#edit',as:'address_edit'
   #post '/addresses' => 'public/addresses#create'
@@ -56,40 +56,40 @@ Rails.application.routes.draw do
     #管理者トップページ
     get '' => 'homes#top',as:'top'
     #商品
-    resources :items, only: [:index, :new, :create,:show,:edit,:update]
+    resources :items, only: [:index, :new,:create,:show,:edit,:update]
     #get 'items' => 'items#index'
     #get 'items/new' => 'items#new'
     #post 'items' => 'items#create'
     #get 'items/:id' => 'items#show',as:'item'
     #get 'items/:id/edit' => 'items#edit',as:'item_edit'
     #patch 'items/:id' => 'items#update'
-    
+
     #ジャンル
     #resources :genres, only: [:index,:create,:edit,:update]
     #get 'genres' => 'genres#index'
     #post 'genres' => 'genres#create'
     #get 'genres/:id/edit' => 'genres#edit',as:'genre_edit'
     #patch'genres/:id' => 'genres#update'
-    
+
     #顧客情報関係
     resources :customers, only: [:index,:show,:edit,:update]
     #get 'customers' => 'customers#index'
     #get 'customers/:id' => 'customers#show',as:'customer'
     #get 'customers/:id/edit' => 'customers#edit',as:'customer_edit'
     #patch'customers/:id' => 'customers#update'
-    
+
     #注文機能
     resources :orders, only: [:index,:show,:update]
     #get 'orders' => 'orders#index'
     #get 'orders/:id' => 'orders#show',as:'order'
     #patch 'orders/:id' => 'orders#update'
-    
+
     #注文詳細
     patch 'orders/:order_id/order_details/:id' => 'order_details#update'
   end
 
-  #topページはapp/views/homes/topで設定
+  #topページはapp/views/public/homes/topで設定
   root to:"public/homes#top"
-  #aboutページはapp/views/homes/aboutで設定
+  #aboutページはapp/views/public/homes/aboutで設定
   get 'about'=>'public/homes#about' ,as:'about'
 end
