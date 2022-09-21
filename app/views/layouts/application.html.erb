@@ -11,7 +11,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <div style="border: solid 2px black ;">
+    <header class="py-3">
+      <%= render 'layouts/header' %>
+    </header>
+    </div>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
