@@ -34,13 +34,13 @@ Rails.application.routes.draw do
   #patch 'customers/withdraw' => 'public/customers#withdraw'
 
   # カート機能
-  resources :cart_items, only: [:index,:create,:update,:destroy], module: 'public' do
+  resources :cart_items, only: [:index,:create,:destroy], module: 'public' do
     collection do
       delete 'destroy_all'
     end
   end
   #get '/cart_items' => 'public/cart_items#index'
-  #patch '/cart_items/:id' => 'public/cart_items#update'
+  patch '/cart_items/:id' => 'public/cart_items#update'
   #delete '/cart_items/:id' => 'public/cart_items#destroy'
   #delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
   #post '/cart_items' => 'public/cart_items#create'
@@ -96,7 +96,7 @@ Rails.application.routes.draw do
 
     #注文機能
     resources :orders, only: [:index,:show,:update] do
-      resources :order_details
+      resources :order_details, only: [:update],as:'details'
     end
     #get 'orders' => 'orders#index'
     #get 'orders/:id' => 'orders#show',as:'order'
