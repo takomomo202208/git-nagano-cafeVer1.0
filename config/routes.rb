@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   #get 'items/:id' => 'public/items#show',as:'item'
 
   # 会員
-  resources :customers, only: [:index,:show,:edit,:update]
+
+  resource :customers, only: [:index,:edit,:update]
   #get 'customers' => 'public/customers#index'
-  #get 'customers/my_page' => 'public/customers#show',as:'my_page'
+  get 'customers/my_page' => 'public/customers#show',as:'my_page'#resourceで書いた場合パス名が「customers」になるため→public/sessions_controller.rbのPath名は修正済み
   #get 'customers/information/edit' => 'public/customers#edit',as:'my_page_edit'
   #patch '/customers/information' => 'public/customers#update'
   get 'customers/unsubscribe' => 'public/customers#unsubscribe',as:'unsubscribe'

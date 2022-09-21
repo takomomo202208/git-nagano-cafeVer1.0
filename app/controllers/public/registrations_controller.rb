@@ -3,23 +3,22 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   #before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_in_path_for(resource)
-    user_path(resource)
-  end
+  #sessionsの方に組み込んだのでコメントアウトでOK（メンターさんに聞きました）
+  #def after_sign_in_path_for(resource)
+    #customers_path(resource)
+  #end
 
-  def after_sign_out_path_for(resource)
-    root_path
-  end
+  #def after_sign_out_path_for(resource)
+    #root_path
+  #end
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+   #def new
+   #end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   #def create
+   #end
 
   # GET /resource/edit
   # def edit
@@ -48,7 +47,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,:last_name,:first_name_kana,:last_name_kana,:postal_code,:address,:telephone_number])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
