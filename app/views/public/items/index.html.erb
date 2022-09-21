@@ -7,3 +7,9 @@
 <h2 style="display:inline">商品一覧</h2>
 <span>(全x件)</span>
 
+<% @items.each do |item| %>
+
+<div><%= item.name %></div>
+<div><%= item.price %></div>
+
+<% end %>
