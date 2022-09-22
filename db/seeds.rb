@@ -14,10 +14,14 @@
       last_name_kana: "タロウ#{n + 1}",
       first_name_kana: "テスト#{n + 1}",
       postal_code: "111#{n + 1}",
-      encrypted_password: "aaa333#{n + 1}",
+      password: "aaa111#{n + 1}",
       address: "日本#{n + 1}",
       telephone_number: "0120000#{n + 1}",
       is_deleted: false,
-      reset_password_token:
     )
   end
+
+Admin.create!(
+   email: 'bonboncho!@test.com',
+   password: 'momotako',
+)
