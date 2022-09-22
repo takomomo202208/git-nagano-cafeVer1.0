@@ -7,8 +7,5 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :addresses,dependent: :destroy
 
-  def full_name #苗字と名前をくっつけるメソッド
-    self.last_name + " " + self.first_name
-  end
 
 end
