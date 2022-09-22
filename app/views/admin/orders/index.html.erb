@@ -1,0 +1,31 @@
+<div class="container px-5 px-sm-0">
+<!--= render 'layouts/errors', obj: @orders %--><!--エラー表示-->
+ <div class="row">
+  <div class="col">
+   <h2>注文履歴一覧</h2>
+   <table class="table table-hover table-inverse"><!--タイトルや本文など今まで登録したすべての情報を表示(収納)する枠-->
+    <thead>
+     <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th><!--機能はまだ作成中-->
+     </tr>
+    </thead>
+    <tbody>
+     <% @orders.each do |f| %>
+      <tr>
+       <td>
+          <%= link_to f.created_at,admin_order_path(f) %>
+       </td>
+       <td><%= f.name %></td>
+       <!--td><!%= f.count %></td-->
+       <td>入金待ち</td>
+      </tr>
+     <% end %>
+    </tbody>
+   </table>
+   <%= paginate @orders %>
+  </div>
+ </div>
+</div>
