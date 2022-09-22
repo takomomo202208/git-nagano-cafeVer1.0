@@ -7,8 +7,5 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :addresses,dependent: :destroy
 
-    # 会員フルネーム
-  def full_name
-    self.first_name + " " + self.last_name
-  end
+
 end
