@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  #before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   #sessionsの方に組み込んだのでコメントアウトでOK（メンターさんに聞きました）
   #def after_sign_in_path_for(resource)
