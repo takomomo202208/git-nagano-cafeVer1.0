@@ -5,11 +5,15 @@
 <br>
 
 <h2 style="display:inline">商品一覧</h2>
-<span>(全x件)</span>
+<span>(全<%= Item.count %>件)</span>
 
 <% @items.each do |item| %>
 
-<div><%= item.name %></div>
-<div><%= item.price %></div>
+<div>
+  <strong><%= item.name %></strong>
+</div>
+<div>
+  <strong>¥<%= item.price.to_s(:delimited) %></strong>
+</div>
 
 <% end %>
