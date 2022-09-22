@@ -1,0 +1,14 @@
+<% if obj.errors.any? %>
+  <div id="error_explanation">
+
+    <!--以下エラーメッセージの日本語化用-->
+    <!--%= t("errors.template.header", model: User.model_name.human, count: obj.errors.count) %-->
+
+    <h3><%= pluralize(obj.errors.count, "error") %> prohibited this user from being saved:</h3>
+    <ul>
+      <% obj.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
