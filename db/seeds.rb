@@ -25,3 +25,19 @@ Admin.create!(
    email: 'bonboncho!@test.com',
    password: 'momotako',
 )
+
+  5.times do |n|
+    Genre.create!(
+      name: "Bon#{n + 1}",
+    )
+  end
+
+  20.times do |n|
+    Item.create!(
+      genre_id: 1,
+      name: "BonBonケーキ#{n + 1}",
+      introduction: "真心こめて作りました💛#{n + 1}",
+      price: "893",
+      is_active: false,
+    )
+  end
