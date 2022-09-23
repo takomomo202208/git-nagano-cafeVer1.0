@@ -14,5 +14,5 @@ class Customer < ApplicationRecord
   def full_name_kana #カナ妙とカナ名をくっつけるメソッド
     self.last_name_kana + " " + self.first_name_kana
   end
-  
+
 end
