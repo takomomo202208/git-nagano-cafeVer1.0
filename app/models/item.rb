@@ -5,8 +5,8 @@ class Item < ApplicationRecord
 
   belongs_to :genre, optional: true
   has_one_attached :image
-  
-  #enum is_active: { "販売中": ture, "売切れ": false }
+
+  enum is_active: { "sale": true, "sold out": false }
 
   #def get_image
     #unless image.attached?
