@@ -65,3 +65,6 @@ gem 'kaminari','~> 1.2.1'
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
+
+#enumの導入
+gem "enum_help"
