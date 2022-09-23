@@ -23,5 +23,9 @@ class Item < ApplicationRecord
       'no_image.jpg'
     end
   end
+  
+  def add_tax_price
+    (self.price * 1.08).round
+  end
 
 end
