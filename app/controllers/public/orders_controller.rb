@@ -26,6 +26,9 @@ class Public::OrdersController < ApplicationController
       @order.name        = current_customer.last_name + current_customer.first_name
     end
 
+    # カートに入ってる商品の合計金額
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+
   end
 
   def complete

@@ -16,18 +16,19 @@
               <tr>
                 <td class="text-left">
                   <!--画像表示-->
+                  <%= image_tag cart.item.get_image(100,100) %>
+
                   <%= cart.item.name %>
                 </td>
                 <td class="text-right">
-                  ¥<%= cart.item.price.to_s(:delimited) %>
+                  ¥<%= (cart.item.taxin_price.round(0)).to_s(:delimited) %>
                 </td>
                 <td class="text-right">
                     <%= cart.amount %>
                 </td>
                 <td class="text-right">
-                  ¥<%= (cart.item.price * cart.amount).to_s(:delimited) %>
+                  ¥<%= (cart.item.taxin_price.round(0) * cart.amount).to_s(:delimited) %>
                 </td>
-                  <% (cart.item.price * cart.amount).to_s(:delimited) %>
               </tr>
             <% end %>
           </tbody>
@@ -37,15 +38,16 @@
         <table class="table table-hover table-condensed table-bordered">
             <tr>
               <th class="info">送料</th>
-              <td class="text-right col-xs-5">¥<%= @order.shipping_cost %></td>
+              <td class="text-right col-xs-5">¥800<!%= @order.shipping_cost %></td>
             </tr>
             <tr>
               <th class="info">商品合計</th>
-              <td class="text-right">¥</td>
+              <td class="text-right">¥ <%=(@total.round(0)).to_s(:delimited) %> </td>
               <!--<td class="text-right">¥<!%= total_price(@cart_items).to_s(:delimited) %></td>-->
             </tr>
             <tr>
               <th class="info">請求金額</th>
+              <td class="text-right">¥ <%=((@total.round(0)) + 800).to_s(:delimited) %> </td>
               <!--<td class="text-right">¥<!%= billing(@order).to_s(:delimited) %></td>-->
             </tr>
         </table>
@@ -61,7 +63,10 @@
           <tr>
             <th  class="info">お届け先</th>
             <td class="text-left">
-              <%= "#{@order.postal_code} #{@order.address} 　#{@order.name}" %>
+              <%= "#{@order.postal_code} #{@order.address}" %>
+              <br>
+              <%= "#{@order.name} " %>
+
             </td>
           </tr>
         </table>
