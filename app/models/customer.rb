@@ -7,10 +7,12 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :addresses,dependent: :destroy
 
-    # 会員フルネーム
-  def full_name
+  def full_name #苗字と名前をくっつけるメソッド
     self.last_name + " " + self.first_name
   end
 
+  def full_name_kana #カナ妙とカナ名をくっつけるメソッド
+    self.last_name_kana + " " + self.first_name_kana
+  end
 
 end

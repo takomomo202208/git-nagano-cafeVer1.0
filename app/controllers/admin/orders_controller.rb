@@ -2,6 +2,9 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
   #管理者以外には処理してほしくないので、最初にadminかどうかを確認
 
+  #before_action :order_customer, only: [:show]
+  #↑今回は使わなくてもOK
+
   def index
    @orders = Order.all
    @orders = Order.page(params[:page])
@@ -21,8 +24,6 @@ class Admin::OrdersController < ApplicationController
      # render :show#詳細ページに戻る
     #end
   end
-
-
 
   private
   def order_params
