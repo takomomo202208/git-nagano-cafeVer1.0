@@ -89,6 +89,62 @@ Item.create!(
       price: 100,
       is_active: true,
       #image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images"), filename:"no_image.jpg")
+    },
+    {
+      genre_id: 1,
+      name: 'モンブラン',
+      introduction: '新商品！',
+      price: 500,
+      is_active: true,
+      #image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images"), filename:"no_image.jpg")
+    },
+    {
+      genre_id: 2,
+      name: 'たこももオリジナルスイーツボックス',
+      introduction: '限定商品！',
+      price: 10000,
+      is_active: true,
+      #image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images"), filename:"no_image.jpg")
+    },
+    {
+      genre_id: 3,
+      name: 'かぼちゃプリン',
+      introduction: '新商品！',
+      price: 400,
+      is_active: true,
+      #image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images"), filename:"no_image.jpg")
+    },
+    {
+      genre_id: 4,
+      name: '千歳飴',
+      introduction: '新商品！',
+      price: 100,
+      is_active: true,
+      #image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images"), filename:"no_image.jpg")
+    },
+    {
+      genre_id: 4,
+      name: 'ブリュレ',
+      introduction: '新商品！',
+      price: 100,
+      is_active: true,
+      #image: File.open("./app/assets/images/no_image.jpg")
+    },
+    {
+      genre_id: 4,
+      name: '大福',
+      introduction: '新商品！',
+      price: 100,
+      is_active: true,
+      #image: File.open("./app/assets/images/no_image.jpg")
+    },
+    {
+      genre_id: 4,
+      name: 'どら焼き',
+      introduction: '新商品！',
+      price: 100,
+      is_active: true,
+      #image: File.open("./app/assets/images/no_image.jpg")
     }
   ]
 )
