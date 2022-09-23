@@ -3,21 +3,24 @@ class Admin::ItemsController < ApplicationController
   before_action :correct_item, only: [:show, :edit]
 
   def new
-    @item = Item.new #@item=インスタンス変数 Item.new=空のモデル
+
+    @item = Item.new
   end
 
   def create
-    @item = Item.new(item_params) #フォームに記述した文字やデータを受け取る＆受け取ったデータを元にインスタンスを作成する
-    if @item.save # インスタンスにsaveメソッドを使いデータベースに保存する
-      redirect_to item_path(@item.id) #成功後・・・商品詳細ページに遷移
+    # @item = Item.new(genre_id: params[:item][:genre_id] )ジャンルのプルダウン
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to item_path(@item.id)
     else
-      render :new #※ render :アクション名で、同じコントローラ内の別アクションのViewを表示できます
-    end
+      render :new
+  end
   end
 
   def index
-    #@items = Item.all #←これ要らないですよね？
-    @items = Item.page(params[:page])
+
+    @item = Item.page(params[:page])
+
   end
 
   def show
