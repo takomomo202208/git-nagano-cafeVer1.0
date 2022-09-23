@@ -1,0 +1,31 @@
+<div class="container px-5 px-sm-0">
+<!--%= render 'layouts/errors', obj: @order %--><!--エラー表示（今回は表示なし）-->
+ <div class="row">
+  <div class="col">
+   <h2>注文履歴詳細</h2>
+   <table class="table table-hover table-inverse"><!--タイトルや本文などを表示(収納)する枠-->
+    <thead>
+     <tr>
+      <th>購入者:<%= link_to @customer.full_name,admin_customer_path(@order) %></th><!--admin側の会員詳細ページへ遷移-->
+      <th>注文日：</th>
+      <th>配送先：<%= @order.full_address %></th>
+      <th>支払方法：<%= @order.payment_method%></th>
+      <th>注文ステータス：入金待ち（機能無し）</th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr>
+       <tb>購入日時</tb>
+       <tb>購入者</tb>
+       <tb>注文個数</tb>
+       <tb colspan="2">注文ステータス</tb><!--機能はまだ作成中-->
+      </tr>
+      <tr>
+        <td></td>
+
+      </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</div>
