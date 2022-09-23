@@ -1,19 +1,25 @@
-<h2>items</h2>
+<div class="container px-5 px-sm-0">
+  <div class="row d-flex">
+    <div class="col-md-3">
+      <div><%= render 'item_genre' %></div>
+    </div>
 
-<div>ジャンル検索の部分テンプレートを準備する</div>
+    <div class="col-md-8 offset-md-1">
+      <h2 style="display:inline">商品一覧</h2>
+      <span>(全<%= Item.count %>件)</span>
 
-<br>
+        <% @items.each do |item| %>
+        <div>
+      <%= image_tag item.get_image %>
+          <div>
+            <strong><%= item.name %></strong>
+          </div>
+          <div>
+            <strong>¥<%= item.price.to_s(:delimited) %></strong>
+          </div>
+        </div>
+      <% end %>
 
-<h2 style="display:inline">商品一覧</h2>
-<span>(全<%= Item.count %>件)</span>
-
-<% @items.each do |item| %>
-
-<div>
-  <strong><%= item.name %></strong>
+    </div>
+  </div>
 </div>
-<div>
-  <strong>¥<%= item.price.to_s(:delimited) %></strong>
-</div>
-
-<% end %>

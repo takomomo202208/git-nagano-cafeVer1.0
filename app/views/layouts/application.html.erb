@@ -1,26 +1,44 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
-    <title>NaganoCafeTakomomo</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
-    <div style="border: solid 2px black ;">
-    <header class="py-3">
-      <%= render 'layouts/header' %>
-    </header>
-    </div>
-    <!--p id="notice"><!%= flash[:notice] %></p--><!--フラッシュメッセージ-->
-	  <p id="alert"><%= flash[:alert] %></p>
-    <%= yield %>
-    <div style="border: solid 2px black ;">
-      <%= render 'layouts/footer' %>
-    </div>
-  </body>
+<head>
+
+<title>NaganoCafeTakomomo</title>
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<%= csrf_meta_tags %>
+
+<%= csp_meta_tag %>
+
+<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body>
+
+<div style="border: solid 2px black ;">
+
+<header class="py-3">
+
+<%= render 'layouts/header' %>
+
+</header>
+
+</div>
+
+<!--p id="notice"><!%= flash[:notice] %></p--><!--フラッシュメッセージ-->
+
+<p id="alert"><%= flash[:alert] %></p>
+
+<%= yield %>
+
+<%= render 'layouts/footer' %>
+
+</body>
+
 </html>
