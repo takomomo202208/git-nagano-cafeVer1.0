@@ -1,1 +1,18 @@
-unsubscribe
+<div class="container">
+	<div class="row">
+		<div class="col-xs-offset-1 col-xs-8　center-block">
+      <div class="unsubscribe">
+        <strong>本当に退会しますか？</strong>
+
+          <div class="unsubscribe-msg ">
+            退会すると会員情報登録や<br>
+            これまでの購入履歴が閲覧できなくなります。<br>
+            <br>
+            退会する場合は,「退会する」をクリックしてください。
+          </div>
+
+          <%= link_to "退会しない", my_page_path, class: 'glyphicon glyphicon-home btn btn-primary' %>
+          <%= link_to "退会する", withdraw_customers_path, method: :PATCH, data: {confirm: "本当に退会してもよろしいですか？"}, class: "glyphicon glyphicon-tint btn btn-danger" %>
+		</div>
+	</div>
+</div>

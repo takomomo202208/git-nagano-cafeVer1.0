@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+#顧客のログイン機能を管理するコントローラー
 class Public::SessionsController < Devise::SessionsController
-  #before_action :customer_state, only: [:create]
+  #ログイン処理が実行される前に、退会ステータス確認
+  before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
     my_page_path
@@ -27,17 +29,22 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   protected
+
   # 退会しているかを判断するメソッド
   def customer_state
-  ## 【処理内容1】 入力されたemailからアカウントを1件取得
+    #sigin_in時に入力されたemailからアカウントを１件取得
     @customer = Customer.find_by(email: params[:customer][:email])
-  ## アカウントを取得できなかった場合、このメソッドを終了する
-    return if !@customer
-  ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-    if @customer.valid_password?(params[:customer][:password])
-  ## 【処理内容3】
 
+    ## アカウントを取得できなかった場合、このメソッドを終了する
+    return if !@customer
+    ## 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
+    puts "通ったよ"
+      ##trueだった場合、退会しているのでサインアップ画面に遷移する
+      flash[:alert] = "このアカウントは退会済みです。"
+      redirect_to new_customer_registration_path
     end
+    ##falseだった場合、退会していないのでそのままcreateアクションを実行させる処理を実行する
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
