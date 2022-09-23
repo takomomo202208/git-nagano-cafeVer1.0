@@ -1,1 +1,19 @@
-<h2>admin/item/show</h2>
+<div class="container px-5 px-sm-0">
+<!--%= render 'layouts/errors', obj: @order %--><!--エラー表示（今回は表示なし）-->
+ <div class="row">
+  <div class="col">
+   <h2>商品詳細</h2>
+   <table class="table table-hover table-inverse"><!--タイトルや本文などを表示(収納)する枠-->
+    <tbody>
+      <tr>
+       <tb>商品名<% %></tb>
+       <tb>商品説明<%= @order.full_address %></tb>
+       <tb>ジャンル</tb>
+       <tb>税込価格（税抜価格)</tb>
+       <td>販売ステータス</td><!--機能はまだ作成中-->
+      </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</div>
