@@ -1,9 +1,8 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
   #管理者以外には処理してほしくないので、最初にadminかどうかを確認
-
-  #before_action :order_customer, only: [:show]
-  #↑今回は使わなくてもOK
+  before_action :order_customer, only: [:show]
+  #特定のアクション処理の前に参照される
 
   def index
    #@orders = Order.all
@@ -11,8 +10,8 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
-   #@order = Order.find(params[:id])
-   @customer = order_customer
+   #@customer = Customer.find(params[:id])
+   #@detail =OrderDetail.find(params[:id])
   end
 
   def update #注文ステータスの更新処理
@@ -30,9 +29,9 @@ class Admin::OrdersController < ApplicationController
    params.require(:order).permit(:customer_id,:name,:adress,:postal_code,:payment_method,:total_payment,:shipping_cost,:status)
   end
 
-  def item_params
-    params.require(:items).permit(:is_active)
-  end
+  #def order_detail_params
+   #params.require(:order_detail).permit(:price,:item_id,:amount,:making_status)
+  #end
 
   def order_customer
    @order = Order.find(params[:id])#その注文の情報を取得

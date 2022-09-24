@@ -3,29 +3,44 @@
  <div class="row">
   <div class="col">
    <h2>注文履歴詳細</h2>
+    <div>
+      <p>購入者:<%= link_to @customer.full_name,admin_customer_path(@order) %></p><!--admin側の会員詳細ページへ遷移-->
+      <p>注文日：</p>
+      <p>配送先：<%= @order.full_address %></p>
+      <p>支払方法：<%= @order.payment_method%></p>
+      <p>注文ステータス：入金待ち（機能無し）</p>
+    </div>
    <table class="table table-hover table-inverse"><!--タイトルや本文などを表示(収納)する枠-->
     <thead>
-     <tr>
-      <th>購入者:<%= link_to @customer.full_name,admin_customer_path(@order) %></th><!--admin側の会員詳細ページへ遷移-->
-      <th>注文日：</th>
-      <th>配送先：<%= @order.full_address %></th>
-      <th>支払方法：<%= @order.payment_method%></th>
-      <th>注文ステータス：入金待ち（機能無し）</th>
-     </tr>
+      <tr>
+       <th>商品名</th>
+       <th>単価（税込）</th>
+       <th>数量</th>
+       <th>小計</th>
+       <th colspan="2">注文ステータス</tb><!--機能はまだ作成中-->
+      </tr>
     </thead>
     <tbody>
+     <% @goukei = 0 %>
+     <% @order.order_details.each do |detail| %>
       <tr>
-       <tb>購入日時</tb>
-       <tb>購入者</tb>
-       <tb>注文個数</tb>
-       <tb colspan="2">注文ステータス</tb><!--機能はまだ作成中-->
+        <td><%= detail.item.name %></td>
+        <td>
+         <%= (detail.item.price * 1.1).floor %>
+        </td>
+        <td><%= detail.amount %></td>
+        <td>
+         <% sum = 0 %>
+         <% sum = (detail.amount * (detail.item.price * 1.1)).floor %>
+         <%= sum  %>
+        </td>
+       <td><%= detail.making_status_i18n %></td>
       </tr>
-      <tr>
-        <td></td>
-
-      </tr>
+      <% @goukei =+ sum %>
+     <% end %>
     </tbody>
    </table>
-  </div>
+  </div> 
+  <div><%= @goukei %></div>
  </div>
 </div>
