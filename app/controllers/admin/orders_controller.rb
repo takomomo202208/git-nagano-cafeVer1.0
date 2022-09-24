@@ -6,7 +6,7 @@ class Admin::OrdersController < ApplicationController
   #↑今回は使わなくてもOK
 
   def index
-   @orders = Order.all
+   #@orders = Order.all
    @orders = Order.page(params[:page])
   end
 
@@ -30,8 +30,8 @@ class Admin::OrdersController < ApplicationController
    params.require(:order).permit(:customer_id,:name,:adress,:postal_code,:payment_method,:total_payment,:shipping_cost,:status)
   end
 
-  def order_detail_params
-    params.require(:order_details).permit(:making_status)
+  def item_params
+    params.require(:items).permit(:is_active)
   end
 
   def order_customer
