@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :genre, optional: true
   has_one_attached :image
 
-  enum is_active: { "sale": true, "sold out": false }
+  enum is_active: { "sale": true, "soldout": false }
 
   def get_image(width, height)
     unless image.attached?
@@ -18,6 +18,10 @@ class Item < ApplicationRecord
 
   def taxin_price
     price*1.1
+  end
+
+　def add_tax_price
+    (self.price * 1.1).round
   end
 
 end
