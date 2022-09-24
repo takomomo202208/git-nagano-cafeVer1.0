@@ -166,6 +166,6 @@ end
     order_id: 1,
     amount: 2,
     price: 893,
-    making_status: false
+    making_status: 0
   )
 end
