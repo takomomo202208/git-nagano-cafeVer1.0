@@ -52,7 +52,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all #destroy_all とは、文字通りすべて削除するメソッドで、指定したレコードをすべて削除することができます。
-    CarItems.destroy_all #カート情報をすべて削除
+    CartItems.destroy_all #カート情報をすべて削除
     redirect_to cart_items_path #cart_itemsのindexページへ戻る
   end
 
