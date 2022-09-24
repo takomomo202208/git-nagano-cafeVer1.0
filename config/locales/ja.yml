@@ -19,5 +19,8 @@ ja:
       item:
         is_active:
           sale: "販売中"
-          sold out: "売切れ"
-          
+          soldout: "売切れ"
+      customer:
+        is_deleted:
+          in_use: "有効"
+          withdrawal: "退会"

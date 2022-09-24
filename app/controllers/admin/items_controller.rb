@@ -10,16 +10,15 @@ class Admin::ItemsController < ApplicationController
     # @item = Item.new(genre_id: params[:item][:genre_id] )ジャンルのプルダウン
     @item = Item.new(item_params)
     if @item.save
-      redirect_to item_path(@item.id)
+      redirect_to admin_item_path
     else
-      render :new
+      render admin_item_path
     end
   end
 
   def index
 
-    @item = Item.page(params[:page])
-
+    @items = Item.page(params[:page])
   end
 
   def show
@@ -41,7 +40,7 @@ class Admin::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:items).permit(:name, :introduction, :price, :is_active)
+    params.require(:item).permit(:name, :introduction, :price, :is_active)
   end
 
   def correct_item

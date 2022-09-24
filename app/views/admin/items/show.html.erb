@@ -2,7 +2,7 @@
  <h2>商品詳細</h2>
  <div class="row">
   <div class="col-md-4">
-   
+
   </div>
   <div class="col-md-8">
    <table class="table table-hover table-inverse">
@@ -16,15 +16,15 @@
     </tr>
     <tr>
      <td>ジャンル</td>
-     <td><%= @item.genre_id.name %></td>
+     <td><%= @item.genre.name %></td>
     </tr>
     <tr>
      <td>税込価格<br>（税抜価格)</td>
-     <td><%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price %>)円</td>
+     <td><%= @item.add_tax_price.to_s(:delimited) %>　(<%= @item.price %>)円</td>
     </tr>
     <tr>
      <td>販売ステータス</td>
-     
+     <td><%= @item.is_active_i18n %></td>
     </tr>
    </table>
   </div>

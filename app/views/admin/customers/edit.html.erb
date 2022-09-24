@@ -1,12 +1,12 @@
 <div class="container">
 
-    <h2><%= @customer.name %>さんの会員情報編集</h2>
-
-    <%= form_with(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <div class="field">
-        <%= f.label :会員ID %>
-        <%= @customer.id %>
-      </div>
+  <h2><%= @customer.full_name %>さんの会員情報編集</h2>
+  <table>
+    <%= form_with model: @customer,url: customer_session_path, local:true, method: :patch do |f| %>
+      <tr class="field">
+        <td><%= f.label :会員ID %></td>
+        <td><%= @customer.id %></td>
+      </tr>
 
       <div class="field">
         <%= f.label :氏名 %>
@@ -29,7 +29,7 @@
       </div>
       <div class="field">
         <%= f.label :電話番号 %>
-        <%= f.telephone_number_field :telephone_number, autocomplete: "telephone_number" %>
+        <%= f.telephone_field :telephone_number, autocomplete: "telephone_number" %>
       </div>
       <div class="field">
         <%= f.label :メールアドレス %>
@@ -37,14 +37,16 @@
       </div>
       <div class="field">
         <%= f.label :会員ステータス %>
-        <%= f.radio_button :is_deleted, false %>
-        <%= f.label :is_deleted, '有効', value: false, style: "display: inline-block" %>
-        <%= f.radio_button :is_deleted, true %>
-        <%= f.label :is_deleted, '退会', value: true, style: "display: inline-block" %>
+        <%= f.radio_button :is_deleted, Customer.is_deleteds.key(false) %>
+        <%= f.label :is_deleted, Customer.is_deleteds_i18n[:in_use] %>
+
+        <%= f.radio_button :is_deleted, Customer.is_deleteds.key(true) %>
+        <%= f.label :is_deleted, Customer.is_deleteds_i18n[:withdrawal]%>
       </div>
 
       <div class="actions">
         <%= f.submit '変更を保持', class: 'btn btn-success' %>
       </div>
     <% end %>
+  </table>
 </div>
