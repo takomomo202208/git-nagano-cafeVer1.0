@@ -1,1 +1,84 @@
-<h2>public/order/show</h2>
+<div class="container">
+  <div calss="row">
+      <div class="col-xs-3 d">
+        <table class="table table-bordered">
+            <tr>
+              <th class="info">注文日</th>
+              <td class="text-right col-xs-5"><%#= @order.shipping_cost %></td>
+            </tr>
+            <tr>
+              <th class="info">配送先</th>
+              <td class="text-right"> <%#=(@total.round(0)).to_s(:delimited) %> </td>
+            </tr>
+            <tr>
+              <th class="info">支払方法</th>
+              <td class="text-right"> <%#=((@total.round(0)) + 800).to_s(:delimited) %> </td>
+            </tr
+            <tr>
+              <th class="info">ステータス</th>
+              <td class="text-right"> <%#=((@total.round(0)) + 800).to_s(:delimited) %> </td>
+            </tr>
+        </table>
+      </div>
+      <div class="col-xs-9 billing">
+        <table class="table table-bordered">
+          <tr>
+            <th  class="info">商品合計</th>
+            <td class="text-left">
+              <%#= @order.payment_method_i18n %>
+            </td>
+          </tr>
+          <tr>
+            <th  class="info">配送料</th>
+            <td class="text-left">
+              <%#= "#{@order.postal_code} #{@order.address}" %>
+              <%#= "#{@order.name} " %>
+            </td>
+          </tr>
+          <tr>
+            <th  class="info">ご請求額</th>
+            <td class="text-left">
+              <%#= "#{@order.postal_code} #{@order.address}" %>
+              <%#= "#{@order.name} " %>
+            </td>
+          </tr>
+          </table>
+        </div>
+    <div class="col-xs-9">
+      <%# if current_customer.cart_items.present? %>
+        <table class="table table-bordered">
+          <thead>
+            <tr class="info">
+              <th>商品</th>
+              <th>単価(税込)</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%# @cart_items.each do |cart| %>
+              <tr>
+                <td class="text-left">
+                  <!--画像表示-->
+                  <%#= image_tag cart.item.get_image(100,100) %>
+                  <%#= cart.item.name %>
+                </td>
+                <td class="text-right">
+                  <%#= (cart.item.taxin_price.round(0)).to_s(:delimited) %>
+                </td>
+                <td class="text-right">
+                    <%#= cart.amount %>
+                </td>
+                <td class="text-right">
+                  <%#= (cart.item.taxin_price.round(0) * cart.amount).to_s(:delimited) %>
+                </td>
+              </tr>
+            <%# end %>
+          </tbody>
+        </table>
+      </div>
+      <%# else %>
+      <%# end %>
+    </div>
+  </div>
+</div>
