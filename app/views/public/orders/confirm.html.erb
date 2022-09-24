@@ -43,12 +43,10 @@
             <tr>
               <th class="info">商品合計</th>
               <td class="text-right">¥ <%=(@total.round(0)).to_s(:delimited) %> </td>
-              <!--<td class="text-right">¥<!%= total_price(@cart_items).to_s(:delimited) %></td>-->
             </tr>
             <tr>
               <th class="info">請求金額</th>
               <td class="text-right">¥ <%=((@total.round(0)) + 800).to_s(:delimited) %> </td>
-              <!--<td class="text-right">¥<!%= billing(@order).to_s(:delimited) %></td>-->
             </tr>
         </table>
       </div>
@@ -57,7 +55,7 @@
           <tr>
             <th  class="info">支払方法</th>
             <td class="text-left">
-              <%= @order.payment_method %>
+              <%= @order.payment_method_i18n %>
             </td>
           </tr>
           <tr>
@@ -78,8 +76,8 @@
           <%= f.hidden_field :address %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :payment_method %>
-          <%= f.hidden_field :total_price %>
-          <%= f.hidden_field :ship, value: @ship %>
+          <%= f.hidden_field :total_payment ,value: @total.to_i + 800.to_i %>
+          <%= f.hidden_field :shipping_cost, value: 800 %>
           <%= link_to "注文情報入力へ戻る", new_order_path, data: {"turbolinks" => false}, class: "btn btn-info col-xs-3 back" %>
           <%= f.submit "購入を確定する", class: "btn btn-warning center-block col-xs-5" %>
         <% end %>
@@ -87,7 +85,7 @@
       <% else %>
           <!--カートアイテムがない時 -->
           <p>お客様のショッピングカートに商品はありませんので注文確定ができません。</p>
-          <p><%= link_to "商品一覧", products_path %>から商品をお探し下さい。</p>
+          <p><%= link_to "商品一覧", items_path %>から商品をお探し下さい。</p>
       <% end %>
     </div>
   </div>
