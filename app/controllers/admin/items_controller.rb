@@ -3,7 +3,9 @@ class Admin::ItemsController < ApplicationController
   before_action :correct_item, only: [:show, :edit]
 
   def new
-    @item = Item.new
+
+
+    @item = Item.new #新規登録画面を映すための空の変数
   end
 
   def create
@@ -17,7 +19,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-
     @items = Item.page(params[:page])
   end
 
