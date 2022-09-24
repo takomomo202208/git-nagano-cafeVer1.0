@@ -261,8 +261,8 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
-  image_processing (~> 1.2)
   enum_help
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   kaminari (~> 1.2.1)
   listen (~> 3.3)
