@@ -1,5 +1,6 @@
 <div class="container">
     <h4 class="mt-5 bg-light">ショッピングカート</h4>
+    <p><%= link_to "カートを空にする",cart_items_path(@cart_items), data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger",method: :delete_all  %></p>
     <table class='table table-hover table-inverse'>
       <thead>
         <tr>
@@ -17,8 +18,10 @@
           <td><%= f.item.price %></td>
           <td><%= f.amount %></td>
           <td>小計を出す計算式</td>
+          <td><%= link_to "削除する",cart_items_path(f), data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger",method: :delete  %></td>
          </tr>
         <% end %>
+        <%= link_to "買い物を続ける",item_path(@item), class:'btn btn-sm btn-success'%>
       </tbody>
     </table>
 </div>
