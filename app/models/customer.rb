@@ -10,11 +10,11 @@ class Customer < ApplicationRecord
   enum is_deleted: { "in_use": false, "withdrawal": true }
 
   def full_name #苗字と名前をくっつけるメソッド
-    self.last_name + " " + self.first_name
+    self.first_name + " " + self.last_name
   end
 
   def full_name_kana #カナ妙とカナ名をくっつけるメソッド
-    self.last_name_kana + " " + self.first_name_kana
+    self.first_name_kana + " " + self.last_name_kana
   end
 
 end

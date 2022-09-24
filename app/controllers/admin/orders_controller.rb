@@ -11,7 +11,10 @@ class Admin::OrdersController < ApplicationController
 
   def show
    #@customer = Customer.find(params[:id])
-   #@detail =OrderDetail.find(params[:id])
+   #@cart_items = .find(params[:id])
+   
+   #商品の合計金額
+   @total = @customer.cart_items.all.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   def update #注文ステータスの更新処理
@@ -28,10 +31,8 @@ class Admin::OrdersController < ApplicationController
   def order_params
    params.require(:order).permit(:customer_id,:name,:adress,:postal_code,:payment_method,:total_payment,:shipping_cost,:status)
   end
-
-  #def order_detail_params
-   #params.require(:order_detail).permit(:price,:item_id,:amount,:making_status)
-  #end
+  
+  #params.require(モデル名).permit(キー1, キー2, ...)
 
   def order_customer
    @order = Order.find(params[:id])#その注文の情報を取得
