@@ -28,10 +28,11 @@ class Admin::OrdersController < ApplicationController
   private
   def order_params
    params.require(:order).permit(:customer_id,:name,:adress,:postal_code,:payment_method,:total_payment,:shipping_cost,:status)
+   #params.require(モデル名).permit(キー1, キー2, ...)
   end
 
   def order_detail_params
-    params.require(:order_details).permit(:making_status)
+    params.require(:order_detail).permit(:making_status)
   end
 
   def order_customer
