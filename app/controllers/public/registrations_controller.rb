@@ -4,13 +4,13 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   #sessionsの方に組み込んだのでコメントアウトでOK（メンターさんに聞きました）
-  #def after_sign_in_path_for(resource)
-    #customers_path(resource)
-  #end
+  def after_sign_in_path_for(resource)
+    customers_path(resource)
+  end
 
-  #def after_sign_out_path_for(resource)
-    #root_path
-  #end
+  def after_sign_out_path_for(resource)
+    root_path
+  end
 
   # GET /resource/sign_up
    #def new
