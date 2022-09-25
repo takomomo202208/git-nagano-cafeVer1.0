@@ -2,7 +2,7 @@
 <h2>注文履歴詳細</h2>
 <div class="container">
  <div calss="row">
-  <div class="col-xs-3 d">
+  <div class="col-xs-3">
    <table class="table table-bordered">
      <tr>
       <th class="info">購入者:</th>
@@ -27,7 +27,7 @@
      </tr>
     </table>
    </div>
-
+   <div class="col-xs-3 billing">
    <table class="table table-hover table-inverse"><!--タイトルや本文などを表示(収納)する枠-->
     <thead>
       <tr>
@@ -49,7 +49,7 @@
         <td>
          <% sum = 0 %>
          <% sum = (detail.amount * (detail.item.price * 1.1)).floor %>
-         <%= sum  %>
+         <%= number_with_delimiter(sum)  %>
         </td>
        <td><!--%= detail.making_status_i18n %-->
         <%= form_with model: detail, url: admin_order_path, local:true, method: :post do |f| %>
@@ -62,27 +62,27 @@
    </table>
   </div>
  </div>
-</div>
+ </div>
 
-      <div class="col-xs-9 billing">
-        <table class="table table-bordered">
-          <tr>
-            <th  class="info">商品合計</th>
-            <td class="text-left">
-              <%= @total.round(0) %>
-            </td>
-          </tr>
-          <tr>
-            <th  class="info">配送料</th>
-            <td class="text-left">
-              <%= @order.shipping_cost %>
-            </td>
-          </tr>
-          <tr>
-            <th  class="info">請求金額合計</th>
-            <td class="text-left">
-              <%= @order.total_payment %>
-            </td>
-          </tr>
-          </table>
-        </div>
+ <div class="col-xs-3 billing">
+  <table class="table table-bordered">
+   <tr>
+    <th  class="info">商品合計</th>
+    <td class="text-left">
+     <%= number_with_delimiter(@total.round(0)) %>
+    </td>
+   </tr>
+   <tr>
+    <th  class="info">配送料</th>
+    <td class="text-left">
+     <%= number_with_delimiter(@order.shipping_cost) %>
+    </td>
+   </tr>
+   <tr>
+    <th class="info">請求金額合計</th>
+     <td class="text-left">
+      <%= number_with_delimiter(@order.total_payment) %>
+     </td>
+    </tr>
+  </table>
+ </div>

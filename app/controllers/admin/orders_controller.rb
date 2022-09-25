@@ -18,25 +18,24 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update #注文ステータスの更新処理
-  #@order = Order.find(params[:id])
-  #@order_detail = Order_detail.find(params[:id])
-    #if @order.update(order_params) && @order_detail.update(order_detail_params)
-     # redirect_to orders_path(@order.id)#, notice: "You have updated customer successfully."
-    #else
-     # render :show#詳細ページに戻る
-    #end
+  @order = Order.find(params[:id])
+  @order_detail = Order_detail.find(params[:id])
+    if @order.update(order_params) && @order_detail.update(order_detail_params)
+      redirect_to orders_path(@order.id)#, notice: "You have updated customer successfully."
+    else
+      render :show#詳細ページに戻る
+    end
   end
 
   private
   def order_params
    params.require(:order).permit(:customer_id,:name,:adress,:postal_code,:payment_method,:total_payment,:shipping_cost,:status)
   end
-  
   #params.require(モデル名).permit(キー1, キー2, ...)
 
   def order_customer
    @order = Order.find(params[:id])#その注文の情報を取得
-   @customer = @order.customer
+   @customer = @order.customer#取得したOrderに関連した会員情報を紐づけする→@customerに収納
   end
 
 end
