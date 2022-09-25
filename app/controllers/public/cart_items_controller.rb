@@ -3,6 +3,7 @@ class Public::CartItemsController < ApplicationController
   before_action :obtain_cart_item,only: [:update, :destroy]
 
   def index
+
     @cart_items = CartItem.all
     #@cart_items = Cart_Item.page(params[:page]) #ページネーションが必要な場合
   end
@@ -65,6 +66,12 @@ class Public::CartItemsController < ApplicationController
   def obtain_cart_item
     @cart_item = CartItem.find(params[:id])
     #アクション内にparams[:id]と記述することで、詳細画面で呼び出される投稿データを URLの/posts/:id 内の:idで判別可能にする。
+  end
+
+  private
+
+  def cart_item_params
+      params.require(:cart_item).permit(:item_id, :amount)
   end
 
 end

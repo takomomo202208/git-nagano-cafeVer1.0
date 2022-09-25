@@ -1,1 +1,51 @@
-<h2>admin/customer/edit</h2>
+<div class="container">
+
+  <h2><%= @customer.full_name %>さんの会員情報編集</h2>
+  <table>
+    <%= form_with model: @customer,url: customer_session_path, local:true, method: :patch do |f| %>
+      <div class="field">
+        <%= f.label :会員ID %>
+        <%= @customer.id %>
+      </div>
+      <div class="field">
+        <%= f.label :氏名 %>
+        <%= f.text_field :first_name, autocomplete: "first_name" %>
+        <%= f.text_field :last_name, autocomplete: "last_name" %>
+      </div>
+      <div class="field">
+        <%= f.label :フリガナ %>
+        <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+        <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
+      </div>
+      <div class="field">
+        <%= f.label :郵便番号 %>
+        <%= f.text_field :postal_code, autocomplete: "postal_code" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :住所 %>
+        <%= f.text_field :address, autocomplete: "address" %>
+      </div>
+      <div class="field">
+        <%= f.label :電話番号 %>
+        <%= f.telephone_field :telephone_number, autocomplete: "telephone_number" %>
+      </div>
+      <div class="field">
+        <%= f.label :メールアドレス %>
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+      <div class="field">
+        <%= f.label :会員ステータス %>
+        <%= f.radio_button :is_deleted, Customer.is_deleteds.key(false) %>
+        <%= f.label :is_deleted, Customer.is_deleteds_i18n[:in_use] %>
+
+        <%= f.radio_button :is_deleted, Customer.is_deleteds.key(true) %>
+        <%= f.label :is_deleted, Customer.is_deleteds_i18n[:withdrawal]%>
+      </div>
+
+      <div class="actions">
+        <%= f.submit '変更を保持', class: 'btn btn-success' %>
+      </div>
+    <% end %>
+  </table>
+</div>

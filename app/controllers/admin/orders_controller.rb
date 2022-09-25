@@ -6,7 +6,7 @@ class Admin::OrdersController < ApplicationController
   #↑今回は使わなくてもOK
 
   def index
-   @orders = Order.all
+   #@orders = Order.all
    @orders = Order.page(params[:page])
   end
 
@@ -31,8 +31,8 @@ class Admin::OrdersController < ApplicationController
    #params.require(モデル名).permit(キー1, キー2, ...)
   end
 
-  def order_detail_params
-    params.require(:order_detail).permit(:making_status)
+  def item_params
+    params.require(:items).permit(:is_active)
   end
 
   def order_customer

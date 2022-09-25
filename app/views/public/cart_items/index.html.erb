@@ -1,27 +1,46 @@
 <div class="container">
-    <h4 class="mt-5 bg-light">ショッピングカート</h4>
-    <p><%= link_to "カートを空にする",cart_items_path(@cart_items), data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger",method: :delete_all  %></p>
-    <table class='table table-hover table-inverse'>
+
+  <div class="row">
+    <h4>ショッピングカート</h4>
+    <%= button_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "btn btn-danger destroy-all" %>
+    <table border="1">
       <thead>
         <tr>
           <th>商品名</th>
-          <th>単価</th>
+          <th>単価（税込）</th>
           <th>数量</th>
           <th>小計</th>
-          <th></th>
+          <th>　</th>
         </tr>
       </thead>
       <tbody>
-        <% @cart_items.each do |f| %>
-         <tr>
-          <td><%= f.item.name %></td>
-          <td><%= f.item.price %></td>
-          <td><%= f.amount %></td>
-          <td>小計を出す計算式</td>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.add_tax_price %></td>
+          <td>
+            <% form_with model: cart_item, url: cart_items_path, method: :patch, local:true do |f| %>
+              <%= f.select :amount, *[1..10] %>
+              <%= f.submit "変更" %>
+            <% end %>
+          </td>
+          <td><%= cart_item.subtotal %></td>
+          <% @合計金額 += cart_item.subtotal %>
           <td><%= link_to "削除する",cart_items_path(f), data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger",method: :delete  %></td>
-         </tr>
+        </tr>
         <% end %>
-        <%= link_to "買い物を続ける",item_path(@item), class:'btn btn-sm btn-success'%>
       </tbody>
     </table>
+    
+  </div>
+
+  <div class="row">
+    <table align="right" border="1">
+      <tr>
+        <td>合計金額</td>
+        <td></td>
+      </tr>
+    </table>
+    <%= link_to "買い物を続ける",item_path(@item), class:'btn btn-sm btn-success'%>
+  </div>
 </div>

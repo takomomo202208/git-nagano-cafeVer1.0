@@ -72,7 +72,7 @@ Rails.application.routes.draw do
     #管理者トップページ
     get '' => 'homes#top',as:'top'
     #商品
-    resources :items, only: [:index, :new,:create,:show,:edit,:update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
     #get 'items' => 'items#index'
     #get 'items/new' => 'items#new'
     #post 'items' => 'items#create'

@@ -3,18 +3,19 @@
     <div class="col-xs-12">
       <h3 class="head-line title_h2 text-center">注文情報入力</h3>
 
-      <!--<!% if current_customer.cart_items.present? %>-->
+      <% if current_customer.cart_items.present? %>
 
         <div class="col-xs-offset-1">
           <%= form_with :model => @order, url:confirm_orders_path, method: :post, local: true  do |f| %>
             <h4 class="col-xs-3 sub-head ">支払い方法</h4>
               <div class="col-xs-10 radio">
-                <%= f.radio_button :payment_method, checked: true ,id:"select_radio1" %>
-                <label for="select_radio1">クレジットカード</label>
+                <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+                <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+
               </div>
               <div class="col-xs-10 radio">
-                <%= f.radio_button :payment_method, id:"select_radio2" %>
-                <label for="select_radio2">銀行振込</label>
+                <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+                <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
               </div>
               <br>
 
@@ -22,6 +23,7 @@
               <div class="col-xs-10 radio">
                 <%= f.radio_button :addresses, "residence", checked: true ,id:"select_radio1" %>
                 <label for="select_radio1">ご自身の住所</label>
+
                 <br>
                 &emsp;<%= "#{current_customer.postal_code} #{current_customer.address}" %>
                 <br>
@@ -53,10 +55,10 @@
           <% end %>
         </div>
 
-      <!--<!% else %>-->
-         <!--if カートアイテムがない時-->
-      <!--  <p>お客様のショッピングカートに商品はありませんので注文情報の入力ができません。</p>-->
-      <!--<!% end %>-->
+      <% else %>
+        <!--カートアイテムがない時-->
+        <p>お客様のショッピングカートに商品はありませんので注文情報の入力ができません。</p>
+      <% end %>
 
     </div>
   </div>

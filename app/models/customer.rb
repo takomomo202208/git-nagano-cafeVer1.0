@@ -7,6 +7,8 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :addresses,dependent: :destroy
 
+  enum is_deleted: { "in_use": false, "withdrawal": true }
+
   def full_name #苗字と名前をくっつけるメソッド
     self.last_name + " " + self.first_name
   end
