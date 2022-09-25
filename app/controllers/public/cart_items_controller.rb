@@ -12,6 +12,7 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.update(cart_item_params)
       redirect_to cart_items_path #数量の変更に成功したとき、カートページに遷移
     else
+      puts "処理失敗"
       render :index #処理失敗時はカートのページに遷移
     end
   end
@@ -31,11 +32,11 @@ class Public::CartItemsController < ApplicationController
         #cart_item.item.id → 参照した商品(cart_item)に関連した商品ID(item.id)と、
         #@cart_item に関連した商品ID(item.id) が同じかどうかを確認する
 
-        new_quantity = cart_item.quantity + @cart_item.quantity
+        new_amount = cart_item.amount + @cart_item.amount
         #同じ商品があった場合・・・その商品の数量を計算する
         #合計値＝すでにカート内にあった商品の個数＋新しく追加される分の個数
 
-        cart_item.update_attribute(:quantity, new_quantity)
+        cart_item.update_attribute(:amount, new_amount)
         #先程出した合計値を対象の商品に更新(update)
 
         @cart_item.delete
@@ -53,22 +54,18 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all #destroy_all とは、文字通りすべて削除するメソッドで、指定したレコードをすべて削除することができます。
-    CartItems.destroy_all #カート情報をすべて削除
+    current_customer.cart_items.destroy_all  #カート情報をすべて削除
     redirect_to cart_items_path #cart_itemsのindexページへ戻る
   end
 
   private
 
-  def cart_item_params
-    params.require(cart_item:).permit(:item_id,:customer_id, :amount)
-  end
+
 
   def obtain_cart_item
     @cart_item = CartItem.find(params[:id])
     #アクション内にparams[:id]と記述することで、詳細画面で呼び出される投稿データを URLの/posts/:id 内の:idで判別可能にする。
   end
-
-  private
 
   def cart_item_params
       params.require(:cart_item).permit(:item_id, :amount)
