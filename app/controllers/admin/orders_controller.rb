@@ -31,7 +31,6 @@ class Admin::OrdersController < ApplicationController
    params.require(:order).permit(:customer_id,:name,:adress,:postal_code,:payment_method,:total_payment,:shipping_cost,:status)
    #params.require(モデル名).permit(キー1, キー2, ...)
   end
-  #params.require(モデル名).permit(キー1, キー2, ...)
 
   def order_customer
    @order = Order.find(params[:id])#その注文の情報を取得
