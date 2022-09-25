@@ -4,19 +4,29 @@
         <table class="table table-bordered">
             <tr>
               <th class="info">注文日</th>
-              <td class="text-right col-xs-5"><%#= @order.shipping_cost %></td>
+              <td class="text-left col-xs-5">
+                <%= @detail.created_at.strftime('%Y/%m/%d %H:%M') %>
+              </td>
             </tr>
             <tr>
               <th class="info">配送先</th>
-              <td class="text-right"> <%#=(@total.round(0)).to_s(:delimited) %> </td>
+              <td class="text-left">
+                <%= @detail.order.postal_code %><br>
+                <%= @detail.order.address %><br>
+                <%= @detail.order.name %>
+              </td>
             </tr>
             <tr>
               <th class="info">支払方法</th>
-              <td class="text-right"> <%#=((@total.round(0)) + 800).to_s(:delimited) %> </td>
-            </tr
+              <td class="text-left">
+                <%= @detail.order.payment_method_i18n %>
+              </td>
+            </tr>
             <tr>
               <th class="info">ステータス</th>
-              <td class="text-right"> <%#=((@total.round(0)) + 800).to_s(:delimited) %> </td>
+              <td class="text-left">
+                <%= @detail.order.status_i18n %>
+              </td>
             </tr>
         </table>
       </div>
@@ -25,21 +35,19 @@
           <tr>
             <th  class="info">商品合計</th>
             <td class="text-left">
-              <%#= @order.payment_method_i18n %>
+              <%= number_with_delimiter(@total) %>
             </td>
           </tr>
           <tr>
             <th  class="info">配送料</th>
             <td class="text-left">
-              <%#= "#{@order.postal_code} #{@order.address}" %>
-              <%#= "#{@order.name} " %>
+              <%= @detail.order.shipping_cost.to_s(:delimited) %>
             </td>
           </tr>
           <tr>
             <th  class="info">ご請求額</th>
             <td class="text-left">
-              <%#= "#{@order.postal_code} #{@order.address}" %>
-              <%#= "#{@order.name} " %>
+              <%= @detail.order.total_payment.to_s(:delimited) %>
             </td>
           </tr>
           </table>
@@ -56,24 +64,24 @@
             </tr>
           </thead>
           <tbody>
-            <%# @cart_items.each do |cart| %>
+              <% @order.order_details.each do |detail| %>
               <tr>
                 <td class="text-left">
-                  <!--画像表示-->
-                  <%#= image_tag cart.item.get_image(100,100) %>
-                  <%#= cart.item.name %>
+                  <%= detail.item.name  %>
                 </td>
                 <td class="text-right">
-                  <%#= (cart.item.taxin_price.round(0)).to_s(:delimited) %>
+                  <%= (detail.item.price * 1.1).floor  %>
                 </td>
                 <td class="text-right">
-                    <%#= cart.amount %>
+                  <%= detail.amount %>
                 </td>
                 <td class="text-right">
-                  <%#= (cart.item.taxin_price.round(0) * cart.amount).to_s(:delimited) %>
+                  <% sum = 0 %>
+                  <% sum = (detail.amount * (detail.item.price * 1.1)).floor %>
+                  <%= number_with_delimiter(sum) %>
                 </td>
               </tr>
-            <%# end %>
+              <% end %>
           </tbody>
         </table>
       </div>
