@@ -1,3 +1,4 @@
+<div class="container">
 <h4 class="mt-5 bg-light">注文履歴一覧</h4>
 
 <table class='table table-hover table-inverse'>
@@ -15,11 +16,17 @@
         <td><%= order.created_at %></td>
         <td><%= order.customer.full_name %></td>
         <td><%= order.order_details.amount %></td>
-        <td></td>
+        <td>
+          <%= f.radio_button :is_deleted, Customer.is_deleteds.key(true) %>
+          <%= f.label :is_deleted, Customer.is_deleteds_i18n[:in_use] %>
+
+          <%= f.radio_button :is_deleted, Customer.is_deleteds.key(false) %>
+          <%= f.label :is_deleted, Customer.is_deleteds_i18n[:withdrawal]%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <%= paginate @orders %>
-
+</div>
 
