@@ -12,16 +12,15 @@ class Admin::OrdersController < ApplicationController
   def show
    #@customer = Customer.find(params[:id])
    #@cart_items = .find(params[:id])
-   
+
    #商品の合計金額
    @total = @customer.cart_items.all.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   def update #注文ステータスの更新処理
   @order = Order.find(params[:id])
-  @order_detail = Order_detail.find(params[:id])
-    if @order.update(order_params) && @order_detail.update(order_detail_params)
-      redirect_to orders_path(@order.id)#, notice: "You have updated customer successfully."
+    if @order.update(order_params)
+      redirect_to admin_order_path(@order.id)#, notice: "You have updated customer successfully."
     else
       render :show#詳細ページに戻る
     end

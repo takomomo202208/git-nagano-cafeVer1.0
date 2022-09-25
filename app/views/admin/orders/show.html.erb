@@ -20,9 +20,12 @@
       <td class="text-right"><%= @order.payment_method_i18n %></td>
      </tr
      <tr>
-      <th class="info">ステータス</th>
-      <%= form_with model: @order, url: admin_order_path, local:true, method: :post do |f| %>
-      <td class="text-right"><%= f.select :status,Order.statuses %></td>
+      <th class="info">注文ステータス</th>
+      <%= form_with model: @order, url: admin_order_path(@order), local:true, method: :patch do |f| %>
+      <td class="text-right">
+       <%= f.select :status,Order.statuses.keys %>
+       <%= f.submit "変更" %>
+      </td>
       <% end %>
      </tr>
     </table>
@@ -35,7 +38,7 @@
        <th>単価（税込）</th>
        <th>数量</th>
        <th>小計</th>
-       <th colspan="2">注文ステータス</tb><!--機能はまだ作成中-->
+       <th colspan="2">製作ステータス</tb><!--機能はまだ作成中-->
       </tr>
     </thead>
     <tbody>
@@ -52,8 +55,9 @@
          <%= number_with_delimiter(sum)  %>
         </td>
        <td><!--%= detail.making_status_i18n %-->
-        <%= form_with model: detail, url: admin_order_path, local:true, method: :post do |f| %>
-        <%= f.select :making_status,OrderDetail.making_statuses %>
+        <%= form_with model: detail, url: admin_order_detail_path(@order.id), local:true, method: :patch do |f| %>
+        <%= f.select :making_status,OrderDetail.making_statuses.keys %>
+        <%= f.submit "変更" %>
         <% end %>
        </td>
       </tr>
