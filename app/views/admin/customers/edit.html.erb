@@ -2,9 +2,9 @@
 
   <h2><%= @customer.full_name %>さんの会員情報編集</h2>
   <table>
-    <%= form_with model: @customer,url: customer_session_path, local:true, method: :patch do |f| %>
+    <%= form_with model: @customer,url: admin_customer_path(@customer), local:true, method: :patch do |f| %>
       <div class="field">
-        <%= f.label :会員ID %>
+        <%= f.label :会員番号%><!--会員IDの場合update＋showページへ遷移されなくなる-->
         <%= @customer.id %>
       </div>
       <div class="field">

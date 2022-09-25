@@ -7,24 +7,25 @@ class Admin::CustomersController < ApplicationController
   end
 
   def show
-    @customer = Customer.find(params[:id])
+    #@customer = Customer.find(params[:id])
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    #@customer = Customer.find(params[:id])
   end
 
   def update
-    if @customer.update(item_params)
+    if @customer.update(customers_params)
       redirect_to admin_customer_path(@customer.id)#, notice: "You have updated customer successfully."
     else
+      puts "失敗したよ(´ﾟдﾟ｀)"
       render :show #showページに戻る
     end
   end
 
   private
   def customers_params
-   params.require(:customers).permit(:email, :encrypted_password,:last_name,:first_name,:last_name_kana,:first_name_kana,:postle_code,:address,:telephone_number,:is_deleted)
+   params.require(:customer).permit(:email, :encrypted_password,:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number,:is_deleted)
   end
 
   def correct_customer
