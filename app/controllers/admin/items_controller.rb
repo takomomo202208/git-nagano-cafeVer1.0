@@ -30,7 +30,7 @@ class Admin::ItemsController < ApplicationController
 
   def update #製作ステータスの更新処理
     @item = Item.find(params[:id]) #← defore_action にかけているため省略可能
-    if @item.update!(item_params)
+    if @item.update(item_params)
       redirect_to admin_item_path(@item.id), notice: "You have updated item successfully."
     else
       render :edit #〇〇ページに戻る
