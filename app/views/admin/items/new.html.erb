@@ -1,7 +1,6 @@
 <div class="container">
     <div class="row">
         <h4 class="mb-2">商品新規登録</h4>
-
         <%= form_with model: @item, url: admin_items_path, local:true, method: :post do |f| %>
             <div class="form-group">
                 <%= f.label :商品画像 %>
