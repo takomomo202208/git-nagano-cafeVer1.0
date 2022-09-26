@@ -5,7 +5,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   #sessionsの方に組み込んだのでコメントアウトでOK（メンターさんに聞きました）
   def after_sign_in_path_for(resource)
-    my_page_path(resource)
+    my_page_path
   end
 
   def after_sign_out_path_for(resource)
