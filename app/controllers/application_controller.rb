@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  #before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
   #devise利用の機能（ユーザ登録、ログイン認証など）が使われる前にconfigure_permitted_parametersメソッドが実行されます。
 
-  protected
+  #protected
 
   #def configure_permitted_parameters
     #devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,:last_name,:frist_name_kana,:last_name_kana,:postal_code,:address,:telephone_number])

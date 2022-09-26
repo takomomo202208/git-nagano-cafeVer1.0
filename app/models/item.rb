@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :genre, optional: true
   has_one_attached :image
 
-  enum is_active: { "sale": true, "soldout": false }
+  enum is_active: { "soldout": false,"sale": true }
 
   def get_image(width, height)
     unless image.attached?
