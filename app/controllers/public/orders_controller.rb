@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
     redirect_to complete_orders_path
 
     # 注文完了後、カート商品を空にする
-    # @cart_items.destroy_all
+    @cart_items.destroy_all
   end
 
   def show
