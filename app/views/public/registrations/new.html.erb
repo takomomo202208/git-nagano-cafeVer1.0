@@ -1,0 +1,69 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <h2>Sign up</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <!--今回は変数使わないのでform_forを使用-->
+
+        <%= render "public/shared/error_messages", resource: resource %>
+        <div class="field form-group col-xs-12">
+          <%= f.label :"名前", autofocus: true, class: "col-sm-2 control-label" %>
+          <%= f.label :"(姓)", class: "col-sm-1 control-label" %>
+          <%= f.text_field :last_name, class: "col-sm-3 form-control-static name" %>
+          <%= f.label :"(名)", class: "col-sm-1 control-label" %>
+          <%= f.text_field :first_name, class: "col-sm-3 form-control-static name" %>
+        </div>
+        <div class="field form-group col-xs-12">
+          <%= f.label :"フリガナ", class: "col-sm-2.5 control-label" %>
+          <%= f.label :"(セイ)", class: "col-sm-1.5 control-label" %>
+          <%= f.text_field :last_name_kana, class: "col-sm-3 form-control-static name" %>
+          <%= f.label :"(メイ)", class: "col-sm-2 control-label" %>
+          <%= f.text_field :first_name_kana, class: "col-sm-3 form-control-static name" %>
+        </div>
+
+        <div class="form-group col-xs-9">
+          <%= f.label :"メールアドレス", class: "col-sm-4 control-label" %>
+          <%= f.text_field :email, class: "col-sm-6 form-control-static"%>
+        </div>
+
+        <div class="form-group col-xs-9">
+          <%= f.label :"郵便番号", class: "col-sm-4 control-label" %>
+          <%= f.text_field :postal_code, class: "col-sm-4 form-control-static postal_code" %>
+        </div>
+
+        <div class="form-group col-xs-9">
+          <%= f.label :"住所", class: "col-sm-4 control-label" %>
+          <%= f.text_field :address, class: "col-sm-7 form-control-static address"  %>
+        </div>
+
+        <div class="form-group col-xs-9">
+          <%= f.label :"電話番号", class: "col-sm-4 control-label" %>
+          <%= f.text_field :telephone_number, class: "col-sm-4 form-control-static" %>
+        </div>
+
+        <div class="field form-group col-xs-9">
+          <%= f.label :パスワード %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %>文字以上)</em>
+          <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
+        </div>
+
+        <div class="field form-group col-xs-9">
+          <%= f.label :"パスワード(確認用)", class: "col-sm-4 control-label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
+        </div>
+
+        <div class="actions col-xs-9">
+          <%= f.submit "新規登録",class: 'btn btn-success btn-lg col-xs-4' %>
+        </div>
+      <% end %>
+
+        <div class="col-xs-9">
+          <h6 class="head-line title_h2 text-center">既に登録済みの方<%= render "public/shared/links" %>からログインしてください。</h6>
+
+        </div>
+
+    </div>
+  </div>
+</div>

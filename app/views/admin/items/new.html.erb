@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <h4 class="mb-2">商品新規登録</h4>
+        <%= form_with model: @item, url: admin_items_path, local:true, method: :post do |f| %>
+            <div class="form-group">
+                <%= f.label :商品画像 %>
+                <%= f.file_field :image, accept: "image/*" %>
+            </div>
+            <div class="form-group">
+                <%= f.label :商品名 %>
+                <%= f.text_field :name %>
+            </div>
+            <div class="form-group">
+                <%= f.label :商品説明 %>
+                <%= f.text_area :introduction %>
+            </div>
+            <div class="form-group">
+                <%= f.label :ジャンル %>
+                <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
+            </div>
+            <div class="form-group">
+                <%= f.label :税抜価格 %>
+                <%= f.text_field :price %>円
+            </div>
+            <div class="form-group">
+                <%= f.label :販売ステータス %>
+                <%= f.radio_button :is_active, Item.is_actives.key(true) %>
+                <%= f.label :is_active, Item.is_actives_i18n[:sale] %>
+
+                <%= f.radio_button :is_active, Item.is_actives.key(false) %>
+                <%= f.label :is_active, Item.is_actives_i18n[:soldout] %>
+            </div>
+            <div class="form-group">
+                <%= f.submit '変更を保持', class: 'btn btn-success' %>
+            </div>
+        <% end %>
+    </div>
+
+</div>

@@ -1,0 +1,40 @@
+<div class="container px-5 px-sm-0">
+  <div class="row d-flex">
+    <div class="col-md-3">
+      <div><%= render 'public/items/item_genre' %></div>
+    </div>
+    <div class="col-md-5">
+      <%= image_tag 'bonbon.png', size: '600x350' %>
+    </div>
+    <div class="col-md-4" style="font-size:5px;">
+      <p>ようこそ、ながのCAKEへ！</p>
+      <p>このサイトは、ケーキ販売のECサイトになります。</p>
+      <p>会員でない方も商品の閲覧はできますが、</p>
+      <p>購入には会員登録が必要になります。</p>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+      <strong style="font-size:25px;">新着商品</strong>
+        <div class="d-flex">
+          <% @items.each do |item| %>
+            <div class="w-25 p-3">
+              <%= link_to image_tag(item.get_image(100,100)), item_path(item.id) %>
+              <div>
+                <strong><%= link_to item.name, item_path(item.id) %></strong>
+              </div>
+              <div>
+                <strong>¥<%= item.price.to_s(:delimited) %></strong>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+      <u><%= link_to 'すべての商品を見る >', items_path %></u>
+    </div>
+  </div>
+</div>

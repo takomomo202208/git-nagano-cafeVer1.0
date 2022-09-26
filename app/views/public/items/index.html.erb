@@ -1,0 +1,27 @@
+<div class="container px-5 px-sm-0">
+  <div class="row d-flex">
+    <div class="col-md-3">
+      <div><%= render 'item_genre' %></div>
+    </div>
+    <div class="col-md-8">
+      <h2 style="display:inline">商品一覧</h2>
+      <span>(全<%= Item.count %>件)</span>
+        <div class="d-flex flex-wrap ">
+          <% @items.each do |item| %>
+            <div class="w-25 p-3">
+              <%= link_to image_tag(item.get_image(100,100)), item_path(item.id) %>
+              <div>
+                <strong><%= link_to item.name, item_path(item.id) %></strong>
+              </div>
+              <div>
+                <strong>¥<%= item.price.to_s(:delimited) %></strong>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <nav class="pagination justify-content-center mt-4 mb-3">
+          <%= paginate @items %>
+        </nav>
+    </div>
+  </div>
+</div>

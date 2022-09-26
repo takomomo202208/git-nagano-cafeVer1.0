@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <a class="navbar-brand"><span><%= link_to "LOGO", root_path %></span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li class="mr-3">ようこそ、<%= current_customer.first_name %>さん！</li>
+          <li class="mr-3"><%= link_to "マイページ", my_page_path, class: "btn btn-outline-secondary" %></li>
+          <li class="mr-3"><%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary" %></li>
+          <li class="mr-3"><%= link_to "カート", cart_items_path, class: "btn btn-outline-secondary" %></li>
+          <li class="mb-1"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary" %></li>
+        <% elsif admin_signed_in? %>
+          <li class="mr-3"><%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary" %></li>
+          <li class="mr-3"><%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary" %></li>
+          <li class="mr-3"><%= link_to "注文履歴一覧", admin_orders_path, class: "btn btn-outline-secondary" %></li>
+          <!--<li><!%= #link_to "ジャンル一覧", _path %></li>-->
+          <li class="mb-1"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %></li>
+        <% else %>
+          <li class="mr-3"><%= link_to "About", about_path, class: "btn btn-outline-secondary" %></li>
+          <li class="mr-3"><%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary" %></li>
+          <li class="mr-3"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary" %></li>
+          <li class="mb-1"><%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary" %></li>
+        <% end %>
+      </ul>
+      <form class="form-inline my-2 ml-auto">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
