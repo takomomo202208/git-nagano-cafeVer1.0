@@ -1,7 +1,7 @@
 <div class="container">
   <div calss="row">
       <div class="col-xs-3 d">
-        <% if current_customer.cart_items.present? %>
+
         <table class="table table-bordered">
             <tr>
               <th class="info">注文日</th>
@@ -85,10 +85,7 @@
           </tbody>
         </table>
       </div>
-      <% else %>
-        <!--カートアイテムがない時-->
-        <p>お客様のショッピングカートに商品はありませんので注文情報の入力ができません。</p>
-      <% end %>
+
     </div>
   </div>
 </div>

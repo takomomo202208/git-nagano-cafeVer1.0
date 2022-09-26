@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+     <% if current_customer.cart_items.present? %>
     <h4>ショッピングカート</h4>
     <%= button_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "btn btn-danger destroy-all" %>
     <table border="1">
@@ -43,5 +44,11 @@
       </tr>
     </table>
     <%= link_to "情報入力に進む", new_order_path, method: :get, class: 'btn btn-success btn-sm' %>
+      <% else %>
+        <!--カートアイテムがない時-->
+        <p>お客様のショッピングカートに商品はありませんので注文情報の入力ができません。</p>
+        <%= button_to "買い物を続ける", root_path, method: :get, class: "btn btn-primary" %>
+      <% end %>
   </div>
+
 </div>

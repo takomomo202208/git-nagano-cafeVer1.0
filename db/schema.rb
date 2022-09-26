@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2022_09_19_085016) do
     t.integer "amount", null: false
     t.integer "price", null: false
     t.integer "making_status", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "s", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_order_details_on_item_id"
     t.index ["order_id"], name: "index_order_details_on_order_id"
