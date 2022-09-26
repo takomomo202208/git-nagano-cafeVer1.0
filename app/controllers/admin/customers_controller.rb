@@ -18,7 +18,6 @@ class Admin::CustomersController < ApplicationController
     if @customer.update(customers_params)
       redirect_to admin_customer_path(@customer.id)#, notice: "You have updated customer successfully."
     else
-      puts "失敗したよ(´ﾟдﾟ｀)"
       render :show #showページに戻る
     end
   end
