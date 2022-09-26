@@ -1,18 +1,18 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin! #admin側のユーザーじゃないとこのコントローラの処理は実行されない
-  before_action :correct_item, only: [:show, :edit]
+  before_action :correct_item, only: [:show, :edit, :update]
 
   def new
-    @item = Item.new #新規登録画面を映すための空の変数
+    @item = Item.new
   end
 
   def create
     # @item = Item.new(genre_id: params[:item][:genre_id] )ジャンルのプルダウン
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admin_item_path
+      redirect_to admin_item_path(@item.id)
     else
-      render admin_item_path
+      redirect_to request.referer || admin_path  #元のページに遷移...失敗した場合はTopページへ遷移
     end
   end
 
@@ -29,7 +29,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update #製作ステータスの更新処理
-    @item = Item.find(params[:id])
+    #@item = Item.find(params[:id]) ← defore_action にかけているため省略可能
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id), notice: "You have updated item successfully."
     else
@@ -38,8 +38,9 @@ class Admin::ItemsController < ApplicationController
   end
 
   private
+
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, :is_active)
+    params.require(:item).permit( :genre_id, :name, :introduction, :price, :is_active)
   end
 
   def correct_item

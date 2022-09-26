@@ -68,3 +68,6 @@ gem 'net-pop'
 
 #enumの導入
 gem "enum_help"
+
+#デバックツールの導入
+gem 'pry-rails'
