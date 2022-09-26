@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin! #admin側のユーザーじゃないとこのコントローラの処理は実行されない
-  before_action :correct_item, only: [:show, :edit, :update]
+  before_action :correct_item, only: [:show, :edit]
 
   def new
     @item = Item.new
@@ -29,8 +29,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update #製作ステータスの更新処理
-    #@item = Item.find(params[:id]) ← defore_action にかけているため省略可能
-    if @item.update(item_params)
+    @item = Item.find(params[:id]) #← defore_action にかけているため省略可能
+    if @item.update!(item_params)
       redirect_to admin_item_path(@item.id), notice: "You have updated item successfully."
     else
       render :edit #〇〇ページに戻る
@@ -40,7 +40,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit( :genre_id, :name, :introduction, :price, :is_active)
+    params.require(:item).permit( :genre_id, :name, :introduction, :price, :is_active, :image)
   end
 
   def correct_item
