@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   validates :name, :introduction, :price, presence: true
-  validates :price, length: {is: 10}, numericality: { only_integer: true }
+  validates :price, numericality: { only_integer: true }
 
   enum is_active: { "soldout": false,"sale": true }
 
